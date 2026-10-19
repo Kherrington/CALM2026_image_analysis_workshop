@@ -17,7 +17,7 @@ It is reccomended that you install the following extensions to get the most out 
 - **Markdown Preview Enhanced** (Yiyi Wang)
   - This will provide you with a preview button at the top for seeing markdown in it's clean state
 - **Python** (microsoft)
-    - Helps integrate python code for how it is colored and written out, comes with a hotse of python packages for environments and debugger
+    - Helps integrate python code for how it is displayed a and has a host of packages so python functions properly withing VS Code 
 - **vscode-pdf** (tomoki1207)
      - If you ever have pdf it won't be a bunch of weird symbols!
 - **Jupyter** (Microsoft)
