@@ -13,6 +13,16 @@ Use the Terminal application provided by your OS.  One the Mac, you can find it 
 ### VSCode installation (alternate option)
 [Download and install](https://code.visualstudio.com/).  Note that VSCode (Visual Studio Code) is not the same thing as Visual Studio, Microsoft's separate full-featured IDE.
 
+It is reccomended that you install the following extensions to get the most out of VS Code. To install an extention go the the icon on the side that is a box divided in to 4 boxes with the upper right box slightly askew
+- **Markdown Preview Enhanced** (Yiyi Wang)
+  - This will provide you with a preview button at the top for seeing markdown in it's clean state
+- **Python** (microsoft)
+    - Helps integrate python code for how it is colored and written out, comes with a hotse of python packages for environments and debugger
+- **vscode-pdf** (tomoki1207)
+     - If you ever have pdf it won't be a bunch of weird symbols!
+- **Jupyter** (Microsoft)
+    - If you use jupyter notebooks this will allow you to run them in VS code without opening the browser
+
 
 
 ## AI coding assistants
