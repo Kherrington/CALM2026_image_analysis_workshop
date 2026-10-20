@@ -74,4 +74,9 @@ One of the best known lossy formats is "jpg" (Joint Photographers Experts Group)
 >* Ask your AI coding assistant to write a script that opens the file Cell_cropped_2.tif, saves it as a jpg, reads in the jpg, then generates an image that shows the difference between the jpg and the original, show all 3 in napari).  Then, ask it to resave the same jpg a hundred times and look at the difference again.
 
 ## png and gif
+Both png and gif save images with a lossless compression (most of the time). However, they only work with 8 bit (RGB) images. They are useful for things like screenshots (large areas with the same intensity compress really well), but do not use them to store microscopy images.
 
+## tif
+The "Tagged Image File Format" can be used to store images in wildly different ways. The format (and metadata) is described in "tags" that are within the file.
+
+> * Ask your AI agent to write a script that reads all the tif tags from testImages/Cell_cropped.tif and shows them in a human readable way.
