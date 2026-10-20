@@ -9,11 +9,12 @@ Apart from the numbers themselves, there is a minimum set of metadata that needs
 
 ![8 bit image of a cell nucleus](../testImages/nucleus_cropped_2.jpg)
 
-To illustrate these points, ask your AI to write scripts that:
-* opens the file testImages/nucleus_cropped_1.tif, displays the first 10 rows and columns as a matrix in the terminal, displays the number of rows and columns and the number type, and displays the image in napari
-* opens the file testImages/nucleus_cropped_1.tif, displays the first 10 rows and 10 columns skipping 2 rows and 2 columns every time, displays the number type and displays the image in napari
-* Ask your AI to modify the script so that you can run it using nucleus_cropped_2 and nucleus_cropped_3 as inputs.  Summarize your findings about these files.
+> To illustrate these points, ask your AI to write scripts that:
+>* opens the file testImages/nucleus_cropped_1.tif, displays the first 10 rows and columns as a matrix in the terminal, displays the number of rows and columns and the number type, and displays the image in napari
+>* opens the file testImages/nucleus_cropped_1.tif, displays the first 10 rows and 10 columns skipping 2 rows and 2 columns every time, displays the number type and displays the image in napari
+>* Ask your AI to modify the script so that you can run it using nucleus_cropped_2 and nucleus_cropped_3 as inputs.  Summarize your findings about these files.
 
+*Note: don't forget to close the napari window to run the next script*
 
 # Computer representation of RGB images
 Color (RedGreenBlue, or RGB) images contain 3 numbers per pixel, one each for the Red, Green and Blue component. Most RGB images have 8-bit (one byte) integer numbers per color, however, color images consisting of larger numbers (such as 10-bit, 12-bit or 16-bit) exist.  Other formats, such as RGBA, where A is an "alpha" channel that determines transparency of the pixel, exist.
@@ -31,45 +32,46 @@ Raw color images look strange.  To make sense of them, they are "Debayered", an 
 
 ![RGB Image of a cell in RGB](../testImages/Cell_cropped_2.jpg)
 
-* Ask your AI coding assistant to write a Python script that opens Cell_cropped_2.tif, displays the R, G, and B values of 3% of the pixels (regularly spaced) in a table, and finally displays the image.
+>* Ask your AI coding assistant to write a Python script that opens Cell_cropped_2.tif, displays the R, G, and B values of 3% of the pixels (regularly spaced) in a table, and finally displays the image.
 
 
 # Changing brightness/contrast in the viewer (usually) does not change pixel values
-Most image viewers will let you change brightness and contrast withou changing pixel values.  Brightness and contrast change the mapping between the pixel value and the intensity of the pixel on the display.  To convince yourself, start napari (in the terminal, type "uv run napari"), open the files nucleu_cropped_1.tif (in textImages), and place the cursor in the top right pixel.  Read the pixel intensity on the status line in the bottom of the screen.  Now, change the contrast limits (for instance, move the right circle in contrast limits to the left, see that the image gets brighter, and read the pixel intensity of the top right pixel again.  Did it change?
+Most image viewers will let you change brightness and contrast withou changing pixel values.  Brightness and contrast change the mapping between the pixel value and the intensity of the pixel on the display.  
+>To convince yourself, start napari (in the terminal, type "uv run napari"), open the files nucleu_cropped_1.tif (in textImages), and place the cursor in the top right pixel.  Read the pixel intensity on the status line in the bottom of the screen.  Now, change the contrast limits (for instance, move the right circle in contrast limits to the left, see that the image gets brighter, and read the pixel intensity of the top right pixel again.  Did it change?
 
 ![Napari Histogram](Pictures/napari-histogram.png)
 
 A histogram is a nice way to visualize both the distribution of pixel intensities in your image and the mapping of pixel values to intensities on the display. In Napari, you find the histogram through a button to the right of contrast limits. The histogram shows the distribution of pixel intensities, the line shows the mapping of pixel intensities to screen brightness.  Note tha gamma slider.  Gamma is the exponential in the mapping of input values to output values.  A gamma of 1.0 results in a straight line.  The interesting thing is that our monitors have a gamma of 2.2, resulting in the argument that a gamma of 0.42 results in a "real" linear display of intensities (ref to Sam's paper).  If you publish images with a gamma different from 1.0, you should declare that.
 
-Interestingly, Fiji/ImageJ will change pixel intensities of RGB images when you change brightness contrast.  You can test this by opening Cell_cropped_2.tif in ImageJ, changing the brightness/contrast, and checking the pixel intensities before and after doing so.
+>Interestingly, Fiji/ImageJ will change pixel intensities of RGB images when you change brightness contrast.  You can test this by opening Cell_cropped_2.tif in ImageJ, changing the brightness/contrast, and checking the pixel intensities before and after doing so.
 
 ## Look up Tables (LUTs)
 Although mapping of pixel values to greyscale intensities is a very natural (and often useful) thing to do, you can also map these differently.  For instance, you can change the color and map to a gradient of any color you like.  This is how you "false" color your images.
 
-Start Napari ("uv run napari") if you do not have it open.  Open the file "nucleus_cropped_1.tif".  Under "colormap", select "blue".  Voila, your DAPI stained nucleus now is shown in blue.  
+>Start Napari ("uv run napari") if you do not have it open.  Open the file "nucleus_cropped_1.tif". Be sure to select the option "napari-tiff" when prompted which reader to use.  Under "colormap", select "blue".  Voila, your DAPI stained nucleus now is shown in blue.  
 
 LUTs do not need to be linear gradients of one color.  THey can be more or less anything.  They often are tables of 256 entries, each with their RGB color associated.  How do you think the software displays 16-bit (2 byte) images with such a LUT?
 
 # Images that consist of multiple channels, time points, Z positions, etc..
 Many data sets we acquire consist of multiple images that are related to each other. LUTs are especially useful with multi-channel images.  
 
-* Open the file Cell_cropped.tif in Napari.  Be sure to select the option "napari-tiff" when prompted which reader to use.  Select Channel 2, and change the colormap to blue (or whatever you like).  Notice the colomaps for the other channels (and change them if you like).
+>* Open the file Cell_cropped.tif in Napari.  Be sure to select the option "napari-tiff" when prompted which reader to use.  Select Channel 2, and change the colormap to blue (or whatever you like).  Notice the colomaps for the other channels (and change them if you like).
 
-Note about color-blind friendly LUTs: About 8% of men and 0.5% of women of Noerthern European decent are Red Green color blind, hence the Red Green Blue scheme as used in the file Cell_cropped.tif may not be optimal for everyone.  Therefore, you may want to switch to using Green & Magenta, or Cyan and Magenta.  
+Note about color-blind friendly LUTs: About 8% of men and 0.5% of women of Noerthern European decent are Red-Green color blind, hence the Red-Green-Blue scheme as used in the file Cell_cropped.tif may not be optimal for everyone.  Therefore, you may want to switch to using Green & Magenta, or Cyan and Magenta.  [See examples of Red-Green pctures look to colorblind people here and alternative in this article by the ASCB.](https://www.ascb.org/diversity-equity-and-inclusion/how-to-make-scientific-figures-accessible-to-readers-with-color-blindness/)
 
 Datasets also can contain multiple time points, Z positions, XY positions, angles, or what not.  This will somehow need to be indicated in the metadata of the image.  The software needs to be aware of those metadata to represent the data ina useful way.  This turns out to be a struggle.
 
 # Storage of image data.
 The most straightforward way to store images appears to be to store the stream of pixel intensities directly, and to store the metadata describing the images.  This is exactly what the [Image Cytometry standard, proposed in 1990](http://dx.doi.org/10.1002/cyto.990110502), does.  
 
-* Open the file testImages/testim.ics in a text editor (such as VSCode).  Inspect the content.  Note the existence of the file testim.ids.  Then open testim.ics in napari.  Does the image you see makes sense based on the metadat you read in the ics file?
+>* Open the file testImages/testim.ics in a text editor (such as VSCode).  Inspect the content.  Note the existence of the file testim.ids.  Then open testim.ics in napari.  Does the image you see makes sense based on the metadat you read in the ics file?
 
 Many, many other image formats have appeared and are actively being used.  In practice, it is important to make a distinctions between "lossless", and "lossy" formats.  This pertains to compression.  Since images are large, it is advantaguous to try to compress the image data.  THis can be done in such a way that the original data can be faithfully restored ("lossless"), or in a way that does not allow for full restoration of the original data ("lossy").  
 
 ## jpg.
 One of the best known lossy formats is "jpg" (Joint Photographers Experts Group).  This format was designed to result in images that look good to humans, and that has a tunable compression ratio.  It can greatly reduce file sizes, and is useful for inserting images into presentation or websites, but should not be used to store your primary data.  
 
-* Ask your AI coding assistant to write a script that opens the file Cell_cropped_2.tif, saves it as a jpg, reads in the jpg, then generates an image that shows the difference between the jpg and the original, show all 3 in napari).  Then, ask it to resave the same jpg a hundred times and look at the difference again.
+>* Ask your AI coding assistant to write a script that opens the file Cell_cropped_2.tif, saves it as a jpg, reads in the jpg, then generates an image that shows the difference between the jpg and the original, show all 3 in napari).  Then, ask it to resave the same jpg a hundred times and look at the difference again.
 
 ## png and gif
 
