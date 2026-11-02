@@ -5,4 +5,6 @@ The students will use AI to create Python code that execute image analysis tasks
 
 The students use uv to manage their Python environment and will use pyprohetc.toml in the base directory.  Use those packages whenever possible.  If there is no alternative, please propose addition of a package (explaining why it is needed), and tell the student how to do this (i.e. do not do this yourself).
 
+Place all source that is created in the directory "src" and provide instructions how to run it.
 
+When transforming images, make sure that the pixel size metadata is copied (as approriately) to the output images.

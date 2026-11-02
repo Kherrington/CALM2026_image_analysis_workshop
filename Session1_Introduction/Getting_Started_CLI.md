@@ -45,6 +45,12 @@ And then commit it:
 ```text
 git commit -m "The first file added to my_branch is just a test file."
 ```
+
+> IMPORTANT:
+> Never commit passwords, secret keys, etc. to a git repository.  It is extremely 
+> difficult to remove these from the repo completely, and pushing them to a site
+> such as GitHub will make them publicly accessible.
+
 You can now push this file to GitHub:
 ```text
 git push
@@ -72,8 +78,14 @@ This will create a (virtual) Python environment as specified in the file "pyproj
 
 Then run the test script using:
 ```text
- uv run Session1-Introduction/show_image.py
+ uv run src/show_image.py
  ```
+
+Note, this command will not exit until you close the (napari) viewer.  If you would like to continue working on the command line while the Python script is running, you can do:
+
+```text
+uv run src/show_image.py &
+```
 
 Fun fact, you can actually skip "uv sync", uv will set up the environment also when you use "uv run". Next time you run the script, it will be much faster.
 

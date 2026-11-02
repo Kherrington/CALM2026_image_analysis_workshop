@@ -18,4 +18,5 @@ dependencies = [
     "bioio-bioformats",
     "napari-bioio-reader",
     "napari-tiff",
+    "tifffile>=2026.10.15",
 ]

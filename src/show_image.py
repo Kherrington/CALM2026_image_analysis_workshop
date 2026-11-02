@@ -2,7 +2,7 @@
 
 Run it from the top folder of the workshop repository with:
 
-    uv run Session1-Introduction/show_image.py
+    uv run src/show_image.py
 
 Napari opens in its own window.  Close that window to end the script.
 """
